@@ -1,5 +1,6 @@
 import Dice_Me
-# if you need required packages, enter in the terminal: pip install -r requirements.txt   gff
+# It may be good to make a virtual enviornment: python3 -m venv venv
+# if you need required packages, enter in the terminal: pip install -r requirements.txt   
 
 
 # for reloading the main dice file, disregard this unless you change "Dice_Me.py"
