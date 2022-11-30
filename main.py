@@ -7,69 +7,77 @@ import Dice_Me
 from importlib import reload
 Dice_Me = reload(Dice_Me)
 
-# feel free to use these as demos
-image = "Images/J&E_Abby_Wedding.jpg"
-image = "Images/J&E_Saint_L.jpg"
-image = "Images/J&E_With_Vicky.jpg" #this will not work unless you crop it (see below)
-image = "Images/J&E_Sunshine.jpg"
-image = "Images/Rainbow-Spectrum.jpg"
+
+from tkinter import Tk     # from tkinter import Tk for Python 3.x
+from tkinter.filedialog import askopenfilename
+
+# A quick gui for selecting images. Most image types should work.
+Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+image = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+
+# # feel free to use these as demos
+# image = "Images/J&E_Abby_Wedding.jpg"
+# image = "Images/J&E_Saint_L.jpg"
+# image = "Images/J&E_With_Vicky.jpg" #this will not work unless you crop it (see below)
+# image = "Images/J&E_Sunshine.jpg"
+# image = "Images/Rainbow-Spectrum.jpg"
 
 # input an image in the parenthesis, if it is in another folder, you must specify it
 # THIS IS THE ONLY LINE OF CODE YOU TECHNICALLY NEED
 pic = Dice_Me.dicePic(image)
 
 
-################## The rest here is optional ##############
+################## The rest here is optional uncomment to use ##############
 
 
-# removing input arguments and including optional arguments
-# These following lines run the code the exact same as above except give no prompts or text displays (except showIm)
-# pic = Dice_Me.dicePic initializes an object and accepts optional cropping (see below).
-# inp_prompt defines if the function will automatically continue and defaults to true
-pic = Dice_Me.dicePic("Images/J&E_Abby_Wedding.jpg", ycrop=[0, 'end'], xcrop = [0, 'end'], inp_prompt=False)
-pic.dice_alt(pic.posDiceNum[8])             # For creating the mock-up image for later use
-                                            # also accepts pic.dice_alt([72, 128])
-pic.inp_Dice(perc_pip=.06, dice_dict=None)  # making the actual dice picture including size of the pips relative to the
-                                            # die, you may also specifiy non-default dice (see below for template!)
-pic.showIm(pic.img_Dice_Pic, print_img=False)   #show the image and optionally print it,
-pic.printIm(file_dup = False)               # print the image (if you didn't print before)
-                                            # pic.printIm(file_dup=True) is optional argument to allow for multiple of
-                                            # the same file printed.
-
-
-
-
-
-# optional cropping starting from top left corner (0, 0) coordinate
-# inputs for x and y cropping are start-value then end-value. You can specify 0 for the very start and
-# 'end' for the very end, otherwise just input desired coordinate range (e.g.  ycrop=[30, 1080], xcrop = [105, 'end'])
-pic = Dice_Me.dicePic(image, ycrop=[0, 'end'], xcrop = [0, 'end'])
-pic = Dice_Me.dicePic(image, ycrop=[0, 'end'], xcrop = [450, 1620])
-pic = Dice_Me.dicePic(image, ycrop=[0, 2400], xcrop = [0, 1860])
-pic = Dice_Me.dicePic(image, ycrop=[24, 2040], xcrop = [96, 2040])
+# # removing input arguments and including optional arguments
+# # These following lines run the code the exact same as above except give no prompts or text displays (except showIm)
+# # pic = Dice_Me.dicePic initializes an object and accepts optional cropping (see below).
+# # inp_prompt defines if the function will automatically continue and defaults to true
+# pic = Dice_Me.dicePic("Images/J&E_Abby_Wedding.jpg", ycrop=[0, 'end'], xcrop = [0, 'end'], inp_prompt=False)
+# pic.dice_alt(pic.posDiceNum[8])             # For creating the mock-up image for later use
+#                                             # also accepts pic.dice_alt([72, 128])
+# pic.inp_Dice(perc_pip=.06, dice_dict=None)  # making the actual dice picture including size of the pips relative to the
+#                                             # die, you may also specifiy non-default dice (see below for template!)
+# pic.showIm(pic.img_Dice_Pic, print_img=False)   #show the image and optionally print it,
+# pic.printIm(file_dup = False)               # print the image (if you didn't print before)
+#                                             # pic.printIm(file_dup=True) is optional argument to allow for multiple of
+#                                             # the same file printed.
 
 
 
 
 
+# # optional cropping starting from top left corner (0, 0) coordinate
+# # inputs for x and y cropping are start-value then end-value. You can specify 0 for the very start and
+# # 'end' for the very end, otherwise just input desired coordinate range (e.g.  ycrop=[30, 1080], xcrop = [105, 'end'])
+# pic = Dice_Me.dicePic(image, ycrop=[0, 'end'], xcrop = [0, 'end'])
+# pic = Dice_Me.dicePic(image, ycrop=[0, 'end'], xcrop = [450, 1620])
+# pic = Dice_Me.dicePic(image, ycrop=[0, 2400], xcrop = [0, 1860])
+# pic = Dice_Me.dicePic(image, ycrop=[24, 2040], xcrop = [96, 2040])
 
-# create your own dict, requires a numpy array.
-# you may change the names of the dice and even the quantity (as long as there are more than 0)
-# DO NOT CHANGE 'base_clr' or 'pip_clr'
-import numpy as np
 
-# for ease of input
-black_pip = np.array([30, 30, 30])
-white_pip = np.array([230, 230, 230])
 
-dice_dict =  {'dice_black': {'base_clr': np.array([56, 50, 50]), 'pip_clr': white_pip},
-              'dice_brown': {'base_clr': np.array([57, 71, 155]), 'pip_clr': white_pip},
-              'dice_red': {'base_clr': np.array([46, 48, 193]), 'pip_clr': white_pip},
-              'dice_orange': {'base_clr': np.array([68, 107, 250]), 'pip_clr': white_pip},
-              'dice_yellow': {'base_clr': np.array([86, 222, 247]), 'pip_clr': black_pip},
-              'dice_green': {'base_clr': np.array([141, 176, 58]), 'pip_clr': white_pip},
-              'dice_blue': {'base_clr': np.array([224, 114, 43]), 'pip_clr': white_pip},
-              'dice_Lpurple': {'base_clr': np.array([219, 166, 205]), 'pip_clr': white_pip},
-              'dice_Dpurple': {'base_clr': np.array([100, 30, 71]), 'pip_clr': white_pip},
-              'dice_white': {'base_clr': np.array([228, 236, 237]), 'pip_clr': black_pip}
-              }
+
+
+
+# # create your own dict, requires a numpy array.
+# # you may change the names of the dice and even the quantity (as long as there are more than 0)
+# # DO NOT CHANGE 'base_clr' or 'pip_clr'
+# import numpy as np
+
+# # for ease of input
+# black_pip = np.array([30, 30, 30])
+# white_pip = np.array([230, 230, 230])
+
+# dice_dict =  {'dice_black': {'base_clr': np.array([56, 50, 50]), 'pip_clr': white_pip},
+#               'dice_brown': {'base_clr': np.array([57, 71, 155]), 'pip_clr': white_pip},
+#               'dice_red': {'base_clr': np.array([46, 48, 193]), 'pip_clr': white_pip},
+#               'dice_orange': {'base_clr': np.array([68, 107, 250]), 'pip_clr': white_pip},
+#               'dice_yellow': {'base_clr': np.array([86, 222, 247]), 'pip_clr': black_pip},
+#               'dice_green': {'base_clr': np.array([141, 176, 58]), 'pip_clr': white_pip},
+#               'dice_blue': {'base_clr': np.array([224, 114, 43]), 'pip_clr': white_pip},
+#               'dice_Lpurple': {'base_clr': np.array([219, 166, 205]), 'pip_clr': white_pip},
+#               'dice_Dpurple': {'base_clr': np.array([100, 30, 71]), 'pip_clr': white_pip},
+#               'dice_white': {'base_clr': np.array([228, 236, 237]), 'pip_clr': black_pip}
+#               }
