@@ -367,6 +367,7 @@ class dicePic():
                 self.printIm()
                 print("Image saved")
         cv2.destroyAllWindows()  # then destroy window
+        cv2.waitKey(1) # Added for macs. For some reason the window will not close unless we add another watekey afterwards.
 
 
 
