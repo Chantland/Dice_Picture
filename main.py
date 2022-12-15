@@ -54,7 +54,7 @@ pic = Dice_Me.dicePic(image, ycrop=[24, 2040], xcrop = [96, 2040])
 
 # create your own dict, requires a numpy array.
 # you may change the names of the dice and even the quantity (as long as there are more than 0)
-# DO NOT CHANGE 'base_clr' or 'pip_clr'
+# DO NOT CHANGE the names 'base_clr' or 'pip_clr' but you can change all other values and names
 import numpy as np
 
 # for ease of input
