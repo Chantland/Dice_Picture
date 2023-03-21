@@ -34,8 +34,8 @@ class dicePic():
         #for finding the greatest number that can go into both pixel lengths of the photo
         while divisor < min(num1, num2):
             if (num1 % divisor == 0) & (num2 % divisor == 0):
-                mod_list.append(divisor)
-                num1 = num1/divisor
+                mod_list.append(divisor) #NOTE: mod_list is never called later
+                num1 = num1/divisor 
                 num2 = num2/divisor
                 greatest_mod *= divisor
                 divisor = 2
@@ -43,7 +43,7 @@ class dicePic():
                 divisor += 1
 
             num_roll_through += 1
-            if divisor == min(ver_y, hor_x):
+            if divisor == min(ver_y, hor_x): #NOTE: Surely there must be a better optimization to to find the greatest mod
                 raise ValueError("One or more image dimensions cannot be subdivided (a side has a prime length)")
 
 
